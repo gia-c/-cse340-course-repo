@@ -1,30 +1,118 @@
-html, body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+* {
+    box-sizing: border-box;
 }
 
+/* ---------- Page base ---------- */
 body {
-    nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #222222;
+    background-color: #f4f7fa;
 
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
+    /* Keeps the footer at the bottom on short pages */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+/* ---------- Navigation ---------- */
+nav {
+    background-color: #1f3a5f;
+    padding: 1rem;
+}
 
-            &:hover {
-                color: #0066cc;
-            }
-        }
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;   /* removes the bullets */
+    margin: 0 auto;
+    padding: 0;         /* removes the default left indent of lists */
+    max-width: 1000px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background-color: #ffffff;
+    color: #1f3a5f;
+}
+
+/* Visible outline for keyboard users */
+a:focus {
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+}
+
+/* ---------- Main content ---------- */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #1f3a5f;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #1f3a5f;
+}
+
+p {
+    max-width: 65ch;
+}
+
+main a {
+    color: #0b4f8a;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background-color: #1f3a5f;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+}
+
+footer p {
+    margin: 0 auto;
+}
+
+/* ---------- Mobile (screens 600px wide or less) ---------- */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
     }
-}               
+
+    nav a {
+        padding: 0.75rem 1rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+}
