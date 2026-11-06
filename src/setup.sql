@@ -57,3 +57,43 @@ INSERT INTO service_project (organization_id, title, description, location, proj
 (3, 'Reading Buddies', 'Volunteers read with children after school to improve literacy.', 'Tempe, AZ', '2027-02-13'),
 (3, 'Senior Center Visit', 'Spend an afternoon with seniors playing games and sharing stories.', 'Chandler, AZ', '2027-03-27'),
 (3, 'Community Cleanup Day', 'Clean streets and parks in the neighborhood.', 'Gilbert, AZ', '2027-05-08');
+
+-- ---------- CATEGORIES ----------
+CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+INSERT INTO category (name) VALUES
+('Housing and Construction'),
+('Environment'),
+('Education'),
+('Food and Hunger'),
+('Community Support');
+
+-- ---------- PROJECT <-> CATEGORY (many to many) ----------
+CREATE TABLE service_project_category (
+    project_id INT NOT NULL,
+    category_id INT NOT NULL,
+    PRIMARY KEY (project_id, category_id),
+    FOREIGN KEY (project_id) REFERENCES service_project(project_id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE
+);
+
+-- Categories: 1 Housing, 2 Environment, 3 Education, 4 Food, 5 Community Support
+INSERT INTO service_project_category (project_id, category_id) VALUES
+(1, 1), (1, 5),     -- Community Center Repair
+(2, 1), (2, 5),     -- Playground Construction
+(3, 1), (3, 5),     -- Home Painting for Seniors
+(4, 1), (4, 5),     -- Wheelchair Ramp Building
+(5, 1), (5, 3),     -- School Library Renovation
+(6, 2), (6, 4),     -- Community Garden Planting
+(7, 4), (7, 5),     -- Food Bank Harvest Day
+(8, 2),             -- Tree Planting Day
+(9, 2), (9, 3),     -- Composting Workshop
+(10, 2),            -- River Cleanup
+(11, 4), (11, 5),   -- Neighborhood Meal Service
+(12, 5),            -- Winter Clothing Drive
+(13, 3),            -- Reading Buddies
+(14, 5),            -- Senior Center Visit
+(15, 2), (15, 5);   -- Community Cleanup Day
