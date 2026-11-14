@@ -4,7 +4,7 @@
         <h2>Explore our categories</h2>
         <ul class="card-list">
             <% for (const category of categories) { %>
-                <li class="card"><%= category.name %></li>
+                <li class="card"><a href="/category/<%= category.category_id %>"><%= category.name %></a></li>
             <% } %>
         </ul>
     </main>

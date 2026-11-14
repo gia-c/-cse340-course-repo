@@ -127,6 +127,32 @@ footer p {
     margin: 0 auto;
 }
 
+/* Categories tag */
+.tag-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag-list a {
+    display: inline-block;
+    background-color: #e3edf7;
+    color: #1f3a5f;
+    border: 1px solid #1f3a5f;
+    border-radius: 999px;    /* bordes totalmente redondeados */
+    padding: 0.25rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.tag-list a:hover {
+    background-color: #1f3a5f;
+    color: #ffffff;
+}
+
 /* ---------- Mobile (screens 600px wide or less) ---------- */
 @media (max-width: 600px) {
     nav ul {
