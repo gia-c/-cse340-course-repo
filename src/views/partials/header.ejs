@@ -20,10 +20,10 @@
     <% const messages = flash(); %>
     <% Object.keys(messages).forEach(type => { %>
         <% if (messages[type].length > 0) { %>
-            
-                <% messages[type].forEach(msg => { %>
+            <% messages[type].forEach(msg => { %>
+                <div class="alert <%= type %>" role="alert">
                     <%= msg %>
-                <% }); %>
-            
+                </div>
+            <% }); %>
         <% } %>
     <% }); %>

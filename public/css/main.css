@@ -1,78 +1,119 @@
+/* =========================================
+   GLOBAL STYLES
+========================================= */
+
 * {
     box-sizing: border-box;
 }
 
-/* ---------- Page base ---------- */
+:root {
+    --primary: #172D46;
+    --secondary: #246B75;
+    --accent: #EAF3F4;
+    --background: #F7F9FC;
+    --white: #FFFFFF;
+    --text: #263442;
+    --border: #DCE4EC;
+    --shadow: 0 4px 12px rgba(23, 45, 70, 0.08);
+    --shadow-hover: 0 8px 20px rgba(23, 45, 70, 0.14);
+}
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    color: #222222;
-    background-color: #f4f7fa;
-
-    /* Keeps the footer at the bottom on short pages */
+    color: var(--text);
+    background-color: var(--background);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* ---------- Navigation ---------- */
+/* =========================================
+   NAVIGATION
+========================================= */
+
 nav {
-    background-color: #1f3a5f;
+    background-color: var(--primary);
     padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 nav ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    list-style: none;   /* removes the bullets */
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
     margin: 0 auto;
-    padding: 0;         /* removes the default left indent of lists */
+    padding: 0;
     max-width: 1000px;
 }
 
 nav a {
-    color: #ffffff;
+    color: var(--white);
     text-decoration: none;
     font-weight: bold;
     display: block;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 0.65rem 1.1rem;
+    border-radius: 6px;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 nav a:hover {
-    background-color: #ffffff;
-    color: #1f3a5f;
+    background-color: var(--secondary);
+    color: var(--white);
 }
 
-/* Visible outline for keyboard users */
-a:focus {
-    outline: 3px solid #ffbf47;
-    outline-offset: 2px;
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid #F2B544;
+    outline-offset: 3px;
 }
 
-/* ---------- Main content ---------- */
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
 main {
     flex: 1;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 3rem 1.5rem;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Montserrat, "Trebuchet MS", Arial, sans-serif;
 }
 
 h1 {
-    font-family: Montserrat, "Trebuchet MS", Arial, sans-serif;
-    font-size: 2rem;
-    color: #1f3a5f;
+    font-size: 2.2rem;
+    color: var(--primary);
     margin-top: 0;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
 }
 
 h2 {
-    font-family: Montserrat, "Trebuchet MS", Arial, sans-serif;
     font-size: 1.5rem;
-    color: #1a6470;
+    color: var(--secondary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    color: var(--primary);
 }
 
 p {
@@ -80,119 +121,287 @@ p {
 }
 
 main a {
-    color: #0b4f8a;
+    color: var(--secondary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+main a:hover {
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 img {
     max-width: 100%;
     height: auto;
+    border-radius: 8px;
 }
 
-/* Card List*/
+/* =========================================
+   CARDS
+========================================= */
+
 .card-list {
-    list-style: none;   
+    list-style: none;
     padding: 0;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
 }
 
 .card {
-    flex: 1;        
-    background-color: #ffffff;
-    border: 1px solid #d0d9e3;
-    border-radius: 8px;
-    padding: 1rem 1.25rem;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
     font-weight: bold;
-    color: #1f3a5f;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--primary);
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
 .card img {
-    display: block;        
+    display: block;
     width: 100px;
     height: auto;
-    margin-bottom: 0.75rem;  
+    margin-bottom: 1rem;
 }
 
-/* ---------- Footer ---------- */
-footer {
-    background-color: #1f3a5f;
-    color: #ffffff;
-    text-align: center;
-    padding: 1rem;
-}
+/* =========================================
+   CATEGORY TAGS
+========================================= */
 
-footer p {
-    margin: 0 auto;
-}
-
-/* Categories tag */
 .tag-list {
     list-style: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 
 .tag-list a {
     display: inline-block;
-    background-color: #e3edf7;
-    color: #1f3a5f;
-    border: 1px solid #1f3a5f;
-    border-radius: 999px;    /* bordes totalmente redondeados */
-    padding: 0.25rem 0.75rem;
+    background-color: var(--accent);
+    color: var(--primary);
+    border: 1px solid #C6DDE0;
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
     font-size: 0.9rem;
     font-weight: bold;
     text-decoration: none;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .tag-list a:hover {
-    background-color: #1f3a5f;
-    color: #ffffff;
+    background-color: var(--secondary);
+    color: var(--white);
 }
 
-/* Flash message styles */
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
+/* =========================================
+   FORMS
+========================================= */
+
+form {
+    max-width: 650px;
+    background-color: var(--white);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin: 1.5rem 0;
 }
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    display: block;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font: inherit;
+    color: var(--text);
+    background-color: var(--white);
+    border: 1px solid #BCCAD7;
+    border-radius: 6px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(36, 107, 117, 0.12);
+    outline: none;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button,
+input[type="submit"] {
+    display: inline-block;
+    background-color: var(--secondary);
+    color: var(--white);
+    font: inherit;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.action-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+main a.action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary);
+    color: #FFFFFF;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--secondary);
+    border-radius: 7px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    transition: background-color 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+main a.action-link:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #FFFFFF;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+main a.action-link.secondary {
+    background-color: #FFFFFF;
+    color: var(--primary);
+    border: 1px solid var(--secondary);
+    box-shadow: none;
+}
+
+main a.action-link.secondary:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #FFFFFF;
+}
+
+/* =========================================
+   FLASH MESSAGES
+========================================= */
+
+.alert {
+    max-width: 1000px;
+    margin: 1rem auto 0;
+    padding: 1rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
 .alert.success {
     color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-}
-.alert.error {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-}
-.alert.warning {
-    color: #856404;
-    background-color: #fff3cd;
-    border-color: #ffeeba;
-}
-.alert.info {
-    color: #0c5460;
-    background-color: #d1ecf1;
-    border-color: #bee5eb;
+    background-color: #E2F3E7;
+    border-color: #B9DFC3;
 }
 
-/* ---------- Mobile (screens 600px wide or less) ---------- */
+.alert.error {
+    color: #842029;
+    background-color: #FBE5E7;
+    border-color: #F1BEC3;
+}
+
+.alert.warning {
+    color: #795B0B;
+    background-color: #FFF4D6;
+    border-color: #F1D995;
+}
+
+.alert.info {
+    color: #0C5460;
+    background-color: #E0F2F5;
+    border-color: #B9DDE3;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background-color: var(--primary);
+    color: var(--white);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0 auto;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
 @media (max-width: 600px) {
     nav ul {
         flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
     }
 
     nav a {
         padding: 0.75rem 1rem;
     }
 
+    main {
+        padding: 2rem 1rem;
+    }
+
     h1 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
     }
 
     h2 {
@@ -200,10 +409,14 @@ footer p {
     }
 
     .card-list {
-        flex-direction: column;   
+        grid-template-columns: 1fr;
     }
 
-    .card {
-        flex: none;               
+    form {
+        padding: 1.25rem;
+    }
+
+    .alert {
+        margin: 1rem;
     }
 }

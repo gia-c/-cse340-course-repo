@@ -3,7 +3,9 @@
     <h1><%= title %></h1>
 
     <h2><%= categoryDetails.name %></h2>
-
+    <div class="action-group">
+        <a href="/edit-category/<%= categoryDetails.category_id %>" class="action-link secondary">Edit Category</a>
+    </div>
     <h2>Service Projects</h2>
     <ul>
         <% for (const project of projects) { %>

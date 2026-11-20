@@ -1,6 +1,9 @@
 <%- include('partials/header') %>
     <main>
         <h1><%= title %></h1>
+        <div class="action-group">
+            <a href="/new-project" class="action-link">+ Add New Project</a>
+        </div>
         <ul>
             <% for (const project of projects) { %>
                 <li>
@@ -10,6 +13,5 @@
                 </li>
             <% } %>
         </ul>
-        <p><a href="/new-project">Add a New Service Project</a></p>
     </main>
 <%- include('partials/footer') %>
