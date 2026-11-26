@@ -6,9 +6,12 @@
     <img src="/images/<%= organizationDetails.logo_filename %>" alt="<%= organizationDetails.name %> logo">
     <p><%= organizationDetails.description %></p>
     <p>Contact: <%= organizationDetails.contact_email %></p>
-    <div class="action-group">
-        <a href="/edit-organization/<%= organizationDetails.organization_id %>" class="action-link secondary">Edit Organization</a>
-    </div>
+    <% if (user && user.role_name === 'admin') { %>
+    <!-- Admin-only links or buttons -->
+        <div class="action-group">
+            <a href="/edit-organization/<%= organizationDetails.organization_id %>" class="action-link secondary">Edit Organization</a>
+        </div>
+    <% } %>
     <h2>Service Projects</h2>
     <ul>
         <% for (const project of projects) { %>

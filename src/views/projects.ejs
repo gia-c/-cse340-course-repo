@@ -1,9 +1,12 @@
 <%- include('partials/header') %>
     <main>
         <h1><%= title %></h1>
-        <div class="action-group">
-            <a href="/new-project" class="action-link">+ Add New Project</a>
-        </div>
+        <% if (user && user.role_name === 'admin') { %>
+            <!-- Admin-only links or buttons -->
+            <div class="action-group">
+                <a href="/new-project" class="action-link">+ Add New Project</a>
+            </div>
+        <% } %>
         <ul>
             <% for (const project of projects) { %>
                 <li>

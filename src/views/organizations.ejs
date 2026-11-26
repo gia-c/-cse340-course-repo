@@ -1,9 +1,11 @@
 <%- include('partials/header') %>
     <main>
         <h1><%= title %></h1>
-        <div class="action-group">
-            <a href="/new-organization" class="action-link">+ Add Organization</a>
-        </div>
+        <% if (user && user.role_name === 'admin') { %>
+            <div class="action-group">
+                <a href="/new-organization" class="action-link">+ Add Organization</a>
+            </div>
+        <% } %>
         <ul class="card-list">
             <% organizations.forEach(organization => { %>
                 <li class="card"><img src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo"><strong><a href="/organization/<%= organization.organization_id %>"><%= organization.name %></a></strong>: <%= organization.contact_email %></li>
