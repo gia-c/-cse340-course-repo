@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<main>
+    <h1><%= title %></h1>
+
+    <ul class="card-list">
+        <% users.forEach(user => { %>
+            <li class="card">
+                <strong><%= user.name %></strong>
+                <p>Email: <%= user.email %></p>
+                <p>Role: <%= user.role_name %></p>
+            </li>
+        <% }); %>
+    </ul>
+</main>
+
+<%- include('partials/footer') %>
